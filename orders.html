@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ІС Вебстудія - Замовлення</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Сайдбар -->
+            <aside class="sidebar">
+                <div class="logo">
+                    <span class="logo-badge">STUDIO</span>
+                    <span class="logo-text">WEBdesign</span>
+                </div>
+
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-btn">Головна</a>
+                    <a href="orders.html" class="nav-btn-active">Замовлення</a>
+                    <a href="#" class="nav-btn">Клієнти</a>
+                    <a href="#" class="nav-btn" id="logoutBtn">Вийти</a>
+                </nav>
+            </aside>
+
+            <!-- Основна частина -->
+            <main class="main-content">
+                <!-- Шапка -->
+                <header class="top-header">
+                    <div class="notification-wrapper">
+                        <button class="bell-btn" id="bellBtn" title="Сповіщення">
+                            <i class="fa-solid fa-phone-flip"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="header-title">ЗАМОВЛЕННЯ</h1>
+                    
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Avatar" class="avatar">
+                        <div class="user-info">
+                            <span class="user-name">Jenett</span>
+                            <span class="user-role">manager</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Панель пошуку та фільтрація -->
+                <section class="search-section">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Пошук за назвою, клієнтом чи ID...">
+                        
+                        <div class="filter-dropdown-wrapper">
+                            <button class="filter-btn" id="filterToggleBtn" title="Фільтр за статусом">
+                                <i class="fa-solid fa-sliders"></i>
+                            </button>
+                            <div class="filter-menu" id="filterMenu">
+                                <span class="filter-option active" data-status="all">Усі статуси</span>
+                                <span class="filter-option" data-status="Нове">Нове</span>
+                                <span class="filter-option" data-status="У процесі">У процесі</span>
+                                <span class="filter-option" data-status="Готово">Готово</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Кнопка створення замовлення -->
+                <div class="action-btn-wrapper">
+                    <a href="create_order.html" class="create-order-btn">+ Створити замовлення</a>
+                </div>
+
+                <!-- Таблиця замовлень -->
+                <section class="table-card">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Назва проєкту</th>
+                                <th>Клієнт</th>
+                                <th>Дедлайн</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td class="id-cell">№001</td>
+                                <td>Інтернет-магазин одягу</td>
+                                <td>ТОВ "Альфа"</td>
+                                <td>25.02.2027</td>
+                                <td><span class="status-badge status-new">Нове</span></td>
+                            </tr>
+                            <tr>
+                                <td class="id-cell">№002</td>
+                                <td>Корпоративний сайт компанії</td>
+                                <td>ТОВ "БудТехнології"</td>
+                                <td>28.10.2026</td>
+                                <td><span class="status-badge status-process">У процесі</span></td>
+                            </tr>
+                            <tr>
+                                <td class="id-cell">№003</td>
+                                <td>Редизайн онлайн-каталогу</td>
+                                <td>Мережа "Автозапчастини"</td>
+                                <td>26.09.2026</td>
+                                <td><span class="status-badge status-done">Готово</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Якщо нічого не знайдено -->
+                    <div class="no-results" id="noResultsMsg" style="display: none;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p>За вашим запитом замовлень не знайдено</p>
+                    </div>
+
+                    <!-- Дії та підсумок під таблицею -->
+                    <div class="table-footer-info">
+                        <span class="counter-text" id="ordersCounter">Знайдено: 3 замовлень</span>
+                        <div class="table-actions">
+                            <button class="action-icon-btn" title="Завантажити / Експорт"><i class="fa-solid fa-download"></i></button>
+                            <button class="action-icon-btn" title="Редагувати"><i class="fa-solid fa-pencil"></i></button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Підвал сайту -->
+                <footer class="main-footer">
+                    <p>© 2026 ІС Вебстудія. Усі права захищені.</p>
+                    <p>Технічна підтримка: <a href="#">Посилання</a></p>
+                </footer>
+
+            </main>
+        </div>
+
+        <!-- Вікно підтвердження виходу з сайту -->
+        <div class="modal-overlay" id="logoutModal">
+            <div class="modal-box">
+                <h3>Завершення сеансу</h3>
+                <p>Ви впевнені, що бажаєте повністю залишити систему та закрити сесію?</p>
+                <div class="modal-buttons">
+                    <button class="modal-btn-cancel" id="cancelLogout">Залишитися</button>
+                    <button class="modal-btn-confirm" id="confirmLogout">Завершити роботу</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
+
